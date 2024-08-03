@@ -46,7 +46,7 @@ class Role extends roleModal
     protected $fillable = [
         'name',
         'display_name',
-        'level',
+        'guard_name',
     ];
 
     const ADMIN = 'admin';

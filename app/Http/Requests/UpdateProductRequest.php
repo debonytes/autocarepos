@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -11,18 +12,24 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
+        $rules = Product::$rules;
+        $rules['code'] = 'required|unique:products,code,' . $this->route('product');
+
+        return $rules;
+    }
+
+    public function messages(): array
+    {
         return [
-            //
+            'code.unique' => __('messages.error.code_taken'),
         ];
     }
 }

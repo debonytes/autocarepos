@@ -37,7 +37,6 @@ class State extends Model
 
     public $fillable = [
         'name',
-        'code',
         'country_id',
     ];
 
@@ -49,7 +48,6 @@ class State extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'code' => 'string',
         'country_id' => 'integer',
     ];
 
@@ -59,8 +57,7 @@ class State extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string|max:250|unique:states,name',
-        'code' => 'required|string|max:10|unique:states,code',
+        'name' => 'required|string|max:170|unique:states,name',
         'country_id' => 'required',
     ];
 

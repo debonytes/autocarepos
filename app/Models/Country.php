@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property int $id
  * @property string $name
- * @property string|null $code
+ * @property string|null $short_code
  * @property int|null $phone_code
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -39,7 +39,7 @@ class Country extends Model
 
     public $fillable = [
         'name',
-        'code',
+        'short_code',
         'phone_code',
     ];
 
@@ -51,7 +51,7 @@ class Country extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'code' => 'string',
+        'short_code' => 'string',
         'phone_code' => 'integer',
     ];
 
@@ -61,8 +61,8 @@ class Country extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string|max:250|unique:countries,name',
-        'code' => 'nullable|string|max:10|unique:countries,code',
+        'name' => 'required|string|max:170|unique:countries,name',
+        'short_code' => 'nullable|string|max:170|unique:countries,short_code',
         'phone_code' => 'nullable|integer',
     ];
 
